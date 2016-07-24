@@ -13,6 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.rules.ExpectedException;
+import org.junit.rules.Timeout;
 
 public class PluralsightTests {
 
@@ -89,6 +90,11 @@ public class PluralsightTests {
 		
 		
 	}
+	
+	//This timeout rule applies to all tests by default
+	@SuppressWarnings("deprecation")
+	@Rule
+	public Timeout timeout = new Timeout(20);
 	
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
