@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class PluralsightTests {
 
@@ -48,6 +49,7 @@ public class PluralsightTests {
 	
 
 	@Test
+	@Category(GoodCategory.class)
 	public void simpleTest()
 	{
 		double result = c.add(1, 1);
@@ -56,6 +58,7 @@ public class PluralsightTests {
 	}
 	
 	@Test
+	@Category({GoodCategory.class, BadCategory.class})
 	public void anotherTest()
 	{
 		double result = c.add(121, 1323);
