@@ -1,10 +1,15 @@
 package com.home.testing;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.matchers.JUnitMatchers.*;
+
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -37,13 +42,20 @@ public class ParamterisedTests {
 	private static Calculator c = new Calculator();
 	
 	@Test
+	@Ignore
 	public void paramterisedCalculatorSimpleTest()
 	{
 		double result = c.add(input1, input2);
 		assertEquals("Simple parameterized test failed.", expectedResult, result, 0);
 	}
 	
-	
+	@Test
+	public void paramterisedHamcrestCalculatorSimpleTest()
+	{
+		double result = c.add(input1, input2);
+		assertThat(result, is(expectedResult));
+		assertThat(result, allOf(is(expectedResult), instanceOf(Double.class)));
+	}
 	
 
 }

@@ -75,6 +75,7 @@ public class PluralsightTests {
 		
 	}
 	
+		
 	@Test(expected=IllegalArgumentException.class)
 	public void exceptionTest()
 	{
