@@ -2,14 +2,17 @@ package com.home.testing;
 
 
 import static org.junit.Assert.*;
+import static org.junit.matchers.JUnitMatchers.containsString;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.ExpectedException;
 
 public class PluralsightTests {
 
@@ -75,13 +78,28 @@ public class PluralsightTests {
 		
 	}
 	
-		
+	
+
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void exceptionTest()
 	{
 		double result = c.add(12, -1);
 		assertEquals("Calcuator is not able to add 12 to -1", 11, result, 0);
 		
+		
+	}
+	
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void exceptionRuleTest()
+	{
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage(containsString("Passed"));
+		double result = c.add(12, -1);
 	}
 	
 	@Test(timeout = 100)
